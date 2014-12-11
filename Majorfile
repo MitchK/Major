@@ -1,0 +1,21 @@
+environment:
+  docker:
+    image: ubuntu
+  inject:
+    - SOME_VARIABLE=$$SOME_VARIABLE
+import: 
+  git:
+    url: https://github.com/MitchK/Major.git
+    branch: master
+dependencies:
+  script:
+    - pip install -r requirements.txt
+test:
+  script:
+    - python runtests.py 
+deploy:
+  script:
+    - python deploy.py
+notify:
+  github-status:
+    accessToken: $$GITHUB_ACCESS_TOKEN
