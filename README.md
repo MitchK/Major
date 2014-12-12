@@ -1,9 +1,31 @@
 Major
 =====
 
-Strict build lifecycles with flexible build steps.
+Major is a light-weight build lifecycle management tool and allows you to do stuff like this:
 
-Install:
+```
+provision:
+  docker:
+    image: ubuntu
+import:
+  git:
+    url: $$REPO_URL
+    branch: $$BRANCH
+dependencies:
+  script:
+    - pip install -r requirements.txt
+test:
+  script:
+    - python runtests.py
+deploy:
+  script:
+    - python deploy.py
+notify:
+  github-status:
+    accessToken: $$GITHUB_ACCESS_TOKEN
+```
+
+Install Major:
 ```
 export MAJOR_PATH=/opt/Major
 mkdir $MAJOR_PATH
