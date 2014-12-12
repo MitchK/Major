@@ -1,7 +1,7 @@
 Major
 =====
 
-Major is a light-weight build lifecycle management tool and allows you to do stuff like this:
+Major is a light-weight build lifecycle management tool and allows you to create a ```Majorfile```:
 
 ```
 provision:
