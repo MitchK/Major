@@ -1,6 +1,8 @@
 Major
 =====
 
+Strict build lifecycles with flexible build steps.
+
 Install:
 ```
 export MAJOR_PATH=/opt/Major
