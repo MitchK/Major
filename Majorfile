@@ -3,8 +3,8 @@ provision:
     image: ubuntu
 import:
   git:
-    url: https://github.com/MitchK/Major.git
-    branch: master
+    url: $$REPO_URL
+    branch: $$BRANCH
 dependencies:
   script:
     - pip install -r requirements.txt
