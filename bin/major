@@ -1,1 +1,8 @@
 #!/bin/sh
+
+if [ -z "$MAJOR_PATH" ]; then
+    echo "Environment variable MAJOR_PATH not set. Exiting..."
+    exit 1
+fi 
+
+python $MAJOR_PATH/src/major.py $@
