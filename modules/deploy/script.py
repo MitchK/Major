@@ -1,3 +1,4 @@
 def plugin(context, params):
-	print("deploy script Initiated")
-	return 0;
+	return {
+		'name': 'deploy script'
+	}

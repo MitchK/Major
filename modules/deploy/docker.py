@@ -1,4 +1,5 @@
 def plugin(context, params):
+
 	return {
-		'name': 'notify github-status'
+		'name': 'deploy to docker registry'
 	}

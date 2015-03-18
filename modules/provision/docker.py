@@ -1,3 +1,4 @@
 def plugin(context, params):
-	print("docker Initiated")
-	return 0;
+	return {
+		'name': 'provision docker'
+	}

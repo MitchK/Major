@@ -1,19 +1,15 @@
-provision:
-  docker:
+- provision:
+   docker:
     image: ubuntu
-import:
-  git:
-    url: $$REPO_URL
-    branch: $$BRANCH
-dependencies:
-  script:
+- dependencies:
+   script:
     - pip install -r requirements.txt
-test:
-  script:
+- test:
+   script:
     - python runtests.py
-deploy:
-  script:
+- deploy:
+   script:
     - python deploy.py
-notify:
-  github-status:
+- notify:
+   github-status:
     accessToken: $$GITHUB_ACCESS_TOKEN

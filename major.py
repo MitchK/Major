@@ -5,14 +5,22 @@ from os import listdir
 from os.path import isfile, join
 
 stream = file('Majorfile', 'r')
-major_file = yaml.load(stream)
+modules = yaml.load(stream)
 
-context = {}
+context = {
+	'plugins': []
+}
+for item in modules:
+	module_name = item.keys()[0]
+	module = item[module_name]
+	for plugin_name in module:
+		source = imp.load_source('module.name', os.path.join(os.environ['MAJOR_PATH'], 'modules', module_name, plugin_name + '.py'))
+		plugin = source.plugin(context, module[plugin_name])
+		plugin['name'] = module_name + '/' + plugin_name
+		context['plugins'] += [plugin]
 
-print(major_file)
+print '>>> MAJOR'
 
-for module in major_file:
-	for plugin in major_file[module]:
-		source = imp.load_source('module.name', os.path.join(os.environ['MAJOR_PATH'], 'modules', module, plugin + '.py'))
-		source.plugin(context, major_file[module][plugin])
+for plugin in context['plugins']:
+	print 'LOADED ' + plugin['name']
 
